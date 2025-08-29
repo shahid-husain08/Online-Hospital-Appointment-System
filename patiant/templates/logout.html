@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Confirmation</title>
+   <link rel="stylesheet" href="{% static 'css/logout.css' %}">
+</head>
+<body>
+    <div class="logout-container">
+        <div class="logo">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a2237511-3569-483a-8bd9-d61e2e3b12e5.png" alt="Company logo with a logout symbol in a circle, modern blue color scheme" />
+        </div>
+        <h1>Are you sure you want to log out?</h1>
+        <p>You'll be signed out of your account, but you can log back in anytime.</p>
+        
+        <div class="loading">
+            <div class="loader"></div>
+        </div>
+
+        <p class="success-message">Logged out successfully! Redirecting...</p>
+
+        <div class="btn-group">
+            <a href="{% url 'index' %}"><button class="btn btn-outline" id="cancelBtn">Cancel</button></a>
+            <a href="{% url 'home' %}"><button class="btn btn-danger" id="logoutBtn">Log Out</button></a>
+        </div>
+    </div>
+
+  <script src="{% static 'js/logout.css' %}"></script>
+</body>
+</html>
+

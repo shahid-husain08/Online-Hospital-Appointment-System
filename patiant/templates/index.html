@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard | Hospital Management System</title>
+    <link rel="stylesheet" href="{% static 'css/p_dash.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'images/hospital_plus.png' %}" alt="Hospital Logo - Should be replaced with hospital branding"
+                    width="50">
+                <h1>LifeLine Hospital</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="{% url 'index' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+                <a href="{% url 'book_appointment' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Book Appointment</span>
+                    </div>
+                </a>
+                <a href="{% url 'my_appointment' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>My Appointments</span>
+                    </div>
+                </a>
+                
+
+                <a href="{% url 'logout' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="welcome-message">
+                    <!-- <h2>Welcome Back, John Doe!</h2>
+                    <p>Here's what's happening with your health today</p> -->
+                </div>
+                <div class="user-profile">
+                    <img src="{% static 'images/user_icon.png' %}" alt="Patient profile photo - John Doe, male, 45 years old"> 
+                    <span>{{ user.email }}</span>
+                    
+                   
+                </div>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card book-appointment">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">Book Appointment</h3>
+                            <p class="card-description">Schedule a new doctor appointment</p>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-button">
+                        <a href="{% url 'book_appointment' %}"><button class="btn btn-primary">BookNow</button></a>
+                    </div>
+                </div>
+
+                <div class="card my-appointments">
+                    <div class="card-header">
+                        <div>
+                            <h3 class="card-title">My Appointments</h3>
+                            <p class="card-description">View upcoming and past appointments</p>
+                        </div>
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-button">
+                         <a href="{% url 'my_appointment' %}"><button class="btn btn-primary">View
+                            Appointments</button></a>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

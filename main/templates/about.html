@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <title>LifLine Hospitals - About Us</title>
+  <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+      <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+</head>
+<body>
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <!-- <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/65cd2193-d7b2-4540-bf3b-e2bc650516d3.png" alt="Zenith Care Hospital logo featuring a blue medical cross with a heart in the center" class="logo-img"> -->
+
+                <div class="logo-text">LifeLine Hospitals</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>About LifeLine Hospital</h1>
+            <p>Committed to excellence in healthcare with over 25 years of trusted service to our community. Our journey is one of compassion, innovation, and healing.</p>
+            <!-- <a href="#" class="btn">Book Appointment</a>
+            <a href="#" class="btn btn-outline">Our Facilities</a> -->
+        </div>
+    </section>
+    
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-img fade-in">
+                    <img src="{% static 'images/hospital.jpeg' %}" alt="Modern hospital building exterior with glass facade and greenery, showcasing Zenith Care Hospital's main entrance">
+                </div> 
+                <div class="about-text fade-in">
+                    <h3>Providing Exceptional Care Since 1998</h3>
+                    <p>Founded by Dr. Robert Chen and a team of dedicated medical professionals, LifeLine Hospital began as a modest 50-bed facility with a vision to transform healthcare in our region.</p>
+                    <p>Today, we stand as a 300-bed multi-specialty hospital, recognized for our state-of-the-art facilities and personalized approach to medicine.</p>
+                    <p>Our journey has been guided by our core values of compassion, integrity, and excellence. Every year, we treat over 100,000 patients with the same level of care we would want for our own families.</p>
+                    <p>In 2022, we were awarded the prestigious "Best Patient Care Hospital" in the state, a testament to our continuous efforts to raise the standard of healthcare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Mission/Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <h2 class="section-title">Our Guiding Principles</h2>
+            <div class="mv-container">
+                <div class="mv-card fade-in">
+                    <div class="mv-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To provide exceptional, comprehensive healthcare services with compassion and respect for human dignity. We are committed to advancing medical excellence through innovation, while maintaining affordability and accessibility for all members of our community.</p>
+                </div>
+                <div class="mv-card fade-in">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be recognized as the regional leader in patient-centered healthcare, setting new standards in clinical excellence and pioneering medical research. We aspire to create a healthier community by integrating cutting-edge technology with personalized, compassionate care.</p>
+                </div>
+                <div class="mv-card fade-in">
+                    <div class="mv-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Compassion: Treating every patient with empathy and kindness. Excellence: Pursuing the highest standards in all we do. Integrity: Maintaining honesty and ethical practice. Innovation: Embracing advancement in medical science. Community: Serving with a spirit of togetherness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Facilities Section -->
+    <section class="facilities-section" id="facilities">
+        <div class="container">
+            <h2 class="section-title">Our World-Class Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-card fade-in">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3dde0ddc-914d-4a02-93cd-3d52befa36e7.png" alt="State-of-the-art operating room with LED surgical lights and modern equipment" class="facility-img">
+                    <div class="facility-info">
+                        <h3>Advanced Surgical Suites</h3>
+                        <p>Our 12 operating rooms feature the latest in minimally invasive technology, including robotic-assisted surgery systems and advanced imaging integration.</p>
+                    </div>
+                </div>
+                <div class="facility-card fade-in">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ffa1c80a-728b-4538-b912-7905cef1a0b5.png" alt="Neonatal intensive care unit with specialized incubators and monitoring equipment" class="facility-img">
+                    <div class="facility-info">
+                        <h3>Level IV NICU</h3>
+                        <p>Our neonatal intensive care unit is staffed 24/7 by board-certified neonatologists and equipped to care for the most fragile newborns with the highest survival rates in the region.</p>
+                    </div>
+                </div>
+                <div class="facility-card fade-in">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/76b1d21e-57a6-4bdb-a4e2-180912e8d327.png" alt="Cardiac catheterization lab with advanced imaging and monitoring technology" class="facility-img">
+                    <div class="facility-info">
+                        <h3>Cardiac Care Center</h3>
+                        <p>Featuring a dedicated cardiac catheterization lab, electrophysiology lab, and comprehensive rehabilitation program for complete heart care.</p>
+                    </div>
+                </div>
+                <div class="facility-card fade-in">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/015d79bb-01d5-4b16-b326-f4e7800e50f3.png" alt="Modern cancer treatment center with linear accelerator for radiation therapy" class="facility-img">
+                    <div class="facility-info">
+                        <h3>Comprehensive Cancer Center</h3>
+                        <p>Our cancer program includes radiation oncology, medical oncology, and surgical oncology, supported by a multidisciplinary tumor board and patient navigators.</p>
+                    </div>
+                </div>
+                <div class="facility-card fade-in">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/12d5bc86-6f01-4fc6-8935-0942cbaade88.png" alt="Rehabilitation gym with patients working with therapists on various equipment" class="facility-img">
+                    <div class="facility-info">
+                        <h3>Rehabilitation Institute</h3>
+                        <p>Our 15,000 sq ft rehabilitation center offers physical, occupational, and speech therapy with aquatic therapy pools and specialized equipment for neurological recovery.</p>
+                    </div>
+                </div>
+                <div class="facility-card fade-in">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a24dbdb6-b559-4b96-a658-8f6f0abcf5de.png" alt="Emergency department with trauma bays and state-of-the-art resuscitation equipment" class="facility-img">
+                    <div class="facility-info">
+                        <h3>24/7 Emergency Care</h3>
+                        <p>Our emergency department is staffed by board-certified emergency physicians and features dedicated trauma bays, pediatric emergency area, and rapid evaluation zones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+ 
+<script src="{% static 'js/about_us.js' %}"></script>
+
+</body>
+</html>
+

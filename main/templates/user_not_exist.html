@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Not Found</title>
+    <link rel="stylesheet" href="{% static 'css/user_not_exist.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+</head>
+<body>
+    <div class="not-found-container">
+        <!-- Decorative ghost animations -->
+        <i class="fas fa-ghost ghost-animation ghost1"></i>
+        <i class="fas fa-ghost ghost-animation ghost2"></i>
+        <i class="fas fa-ghost ghost-animation ghost3"></i>
+        
+        <div class="error-icon">
+            <i class="fas fa-user-slash"></i>
+        </div>
+        <h1>User Not Exist</h1>
+        <p>We couldn't find the user you're looking for. Double-check the username or email address, or try searching again.</p>
+        
+        <!-- <div class="search-box">
+            <input type="text" placeholder="Search for users..." id="searchInput">
+            <button onclick="searchAgain()"><i class="fas fa-search"></i> Search</button>
+        </div> -->
+        
+        <div class="actions">
+            <a href="{% url 'auth' %}" class="btn btn-primary" onclick="goHome()">
+                <i class="fas fa-home"></i> Return Home
+            </a>
+            <a href="#" class="btn btn-outline" onclick="contactSupport()">
+                <i class="fas fa-headset"></i> Contact Support
+            </a>
+            
+        </div>
+    </div>
+
+   <script src="{% static 'js/user_not_exist.js' %}"></script>
+</body>
+</html>

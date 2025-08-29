@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patient Registration</title>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"rel="stylesheet"/>
+  
+  
+</head>
+<body>
+  <main class="container" role="main" aria-label="Patient Registration Form">
+    <section class="left-side" aria-hidden="true">
+      <img
+        src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8431d247-cf4e-48fc-a226-3fd391480366.png"
+        alt="Illustration showing doctors and patients interacting with medical charts and computers in calming blue and white colors"
+        onerror="this.onerror=null;this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/07111bc3-f049-49dd-a939-48033793cef8.png';"
+      />
+    </section>
+
+    <section class="right-side">
+      <h2>Patient Registration</h2>
+
+      <form id="patientRegistrationForm"  method="POST" action="" novalidate>
+        
+
+         {% csrf_token %}
+        
+
+
+        <label for="fullName">Full Name</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Enter your full name"
+          autocomplete="name"
+          required
+          aria-required="true"
+          aria-describedby="fullNameHelp"
+        />
+        <small id="fullNameHelp" style="color: transparent; font-size: 0.75rem;">Required full name</small>
+
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+          required
+          aria-required="true"
+          aria-describedby="emailHelp"
+        />
+        <small id="emailHelp" style="color: transparent; font-size: 0.75rem;">Required valid email</small>
+
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            autocomplete="new-password"
+            required
+            aria-required="true"
+            aria-describedby="passwordHelp"
+          />
+          <span class="toggle-password" tabindex="0" role="button" aria-label="Toggle password visibility" aria-pressed="false">
+            <i class="fa-solid fa-eye"></i>
+          </span>
+        </div>
+        <small id="passwordHelp" style="color: transparent; font-size: 0.75rem;">Required password</small>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            autocomplete="new-password"
+            required
+            aria-required="true"
+            aria-describedby="confirmPasswordHelp"
+          />
+          <span class="toggle-password" tabindex="0" role="button" aria-label="Toggle confirm password visibility" aria-pressed="false">
+            <i class="fa-solid fa-eye"></i>
+          </span>
+        </div>
+        <small id="confirmPasswordHelp" style="color: transparent; font-size: 0.75rem;">Re-enter password to confirm</small>
+
+        <label for="mobileNumber">Mobile Number</label>
+        <div class="mobile-wrapper">
+          <i class="fa-solid fa-phone icon-phone" aria-hidden="true"></i>
+          <input
+            type="tel"
+            id="mobileNumber"
+            name="mobileNumber"
+            placeholder="Enter your mobile number"
+            pattern="[0-9\s\-\+\(\)]{7,20}"
+            autocomplete="tel"
+            required
+            aria-required="true"
+            aria-describedby="mobileHelp"
+          />
+        </div>
+        <small id="mobileHelp" style="color: transparent; font-size: 0.75rem;">Enter valid phone number</small>
+
+        <button type="submit" aria-label="Submit patient registration form">Register</button>
+      </form> 
+      <p class="under-form-text" aria-live="polite">
+        Already registered? <a href="{% url 'auth' %}" tabindex="0">Login</a>
+      </p>
+    </section>
+  </main>
+
+ <script src="{% static 'js/register1.js' %}"></script>
+</body>
+</html>
+

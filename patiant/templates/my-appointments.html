@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments | Hospital Management System</title>
+    <link rel="stylesheet" href="{% static 'css/myappoi.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'images/hospital_plus.png' %}" alt="Hospital Logo - Should be replaced with hospital branding"
+                    width="50">
+                <h1>LifeLine Hospital</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="{% url 'index' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+                <a href="{% url 'book_appointment' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item" onclick="window.location.href='book-appointment.html'">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Book Appointment</span>
+                    </div>
+                </a>
+                <a href="{% url 'my_appointment' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item active">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>My Appointments</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'logout' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="page-title">
+                    <h2>My Appointments</h2>
+                    <p>View and manage your scheduled appointments</p>
+                </div>
+                <div class="user-profile">
+                     <img src="{% static 'images/user_icon.png' %}" alt="Patient profile photo - John Doe, male, 45 years old">
+                    
+                    <span>{{ user.email }}</span>
+                </div>
+            </div>
+
+            <div class="appointments-container">
+                <div class="appointments-header">
+                    <h3>Appointment List</h3>
+                    <!-- <button class="btn btn-primary" onclick="window.location.href='book-appointment.html'">
+                        <i class="fas fa-plus"></i> Book New Appointment
+                    </button> -->
+                </div>
+
+                <div class="tabs">
+                    <div class="tab active" data-tab="upcoming">Upcoming</div>
+                    <div class="tab" data-tab="completed">Accept</div>
+                    <div class="tab" data-tab="cancelled">Cancelled</div>
+                </div>
+
+
+
+
+
+
+
+                
+
+                <!-- upcoming -->
+
+                <div id="upcomingTab" class="tab-content">
+                    {% for appt in upcoming %}
+                    <!-- ..................... -->
+                    
+
+                        <h4>{{ appt.patiantname }}</h4>
+                        
+                        <!-- ...................... -->
+                        <div class="appointment-card">
+                            <p>{{ appt.doctor }} - {{ appt.department }}</p>
+                            <p>{{ appt.date }} at {{ appt.time }}</p>
+                            <p>Reason: {{ appt.reason }}</p>
+                            <p>Mobile:{{ appt.mobileno }}</p>
+                        <!-- <a href="{% url 'cancel_appointment' appt.id %}" class="btn btn-danger">Cancel</a> -->
+                        <div class="appointment-actions">
+
+                            <a href="{% url 'reschedule_appointment' appt.id %}"> <button class="btn btn-primary">
+                                    <i class="fas fa-edit"></i> Reschedule </button>
+                            </a>
+                            <a href="{% url 'cancel_appointment' appt.id %}"><button class="btn btn-danger">
+                                    <i class="fas fa-times"></i> Cancel</button>
+                            </a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No upcoming appointments.</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Completed -->
+                <div id="completedTab" class="tab-content" style="display:none;">
+                    {% for appt in completed %}
+                    <div class="appointment-card">
+                        <h4>{{ appt.patiantname }}</h4>
+                        <p>{{ appt.doctor }} - {{ appt.department }}</p>
+                        <p>{{ appt.date }} at {{ appt.time }}</p>
+                        <p>Reason: {{ appt.reason }}</p>
+                        <p>Mobile:{{ appt.mobileno }}</p>
+                        <span class="appointment-status status-accepted">Accepted</span>
+                    </div>
+                    {% empty %}
+                    <p>No completed appointments.</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Cancelled -->
+                <div id="cancelledTab" class="tab-content" style="display:none;">
+                    {% for appt in cancelled %}
+                    <h4>{{ appt.patiantname }}</h4>
+                    <div class="appointment-card cancelled">
+                        <p>{{ appt.doctor }} - {{ appt.department }}</p>
+                        <p>{{ appt.date }} at {{ appt.time }}</p>
+                        <p>Reason: {{ appt.reason }}</p>
+                         
+                        <span class="status-cancelled" style="color: red; background-color: #fff;">Cancelled</span>
+                    </div>
+                    {% empty %}
+                    <p>No cancelled appointments.</p>
+                    {% endfor %}
+                </div>
+
+                
+
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/myappoi.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0353a4; /* Deep blue background */
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      user-select: none;
+    }
+    a {
+      color: #0353a4;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+
+    /* Container for the whole box */
+    .container {
+      width: 900px;
+      max-width: 95vw;
+      margin: 3rem auto;
+      background-color: #fff;
+      border-radius: 10px;
+      display: flex;
+      box-shadow: 0 6px 18px rgb(3 83 164 / 0.3);
+      overflow: hidden;
+      user-select: text;
+    }
+    /* Left side illustration */
+    .left-side {
+      flex: 1.25;
+      background-color: #f9fbfc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .left-side img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 6px 24px rgb(3 83 164 / 0.15);
+      background-color: white;
+    }
+
+    /* Right side form */
+    .right-side {
+      flex: 1.5;
+      padding: 3rem 3.5rem;
+      color: #0d2940;
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .right-side h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.02em;
+      color: #0d2940;
+      user-select: text;
+    }
+
+    /* Form and inputs */
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 0.22rem;
+      user-select: text;
+      color: #0d2940;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      border: 1.4px solid #c6d2df;
+      border-radius: 6px;
+      padding: 0.55rem 0.85rem;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      color: #0d2940;
+      user-select: text;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus {
+      border-color: #0353a4;
+      outline: none;
+      box-shadow: 0 0 5px #0353a4aa;
+    }
+
+    /* Password field with toggle */
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .password-wrapper input {
+      flex: 1;
+    }
+    .password-wrapper .toggle-password {
+      position: absolute;
+      right: 12px;
+      color: #7a8a9f;
+      cursor: pointer;
+      font-size: 1.15rem;
+      user-select: none;
+      display: flex;
+      align-items: center;
+    }
+    .password-wrapper .toggle-password:hover {
+      color: #0353a4;
+    }
+
+    /* Mobile number input with icon */
+    .mobile-wrapper {
+      position: relative;
+    }
+    .mobile-wrapper input {
+      padding-left: 2.3rem;
+    }
+    .mobile-wrapper .icon-phone {
+      position: absolute;
+      top: 50%;
+      left: 9px;
+      transform: translateY(-50%);
+      color: #7a8a9f;
+      font-size: 1.15rem;
+      user-select: none;
+    }
+
+    /* Submit button */
+    button {
+      background-color: #0353a4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      padding: 0.9rem 0;
+      font-size: 1.15rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    button:hover,
+    button:focus {
+      background-color: #023d75;
+      outline: none;
+    }
+
+    /* Under form text */
+    .under-form-text {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #455a75;
+      user-select: text;
+    }
+    .under-form-text strong {
+      font-weight: 600;
+      color: #0353a4;
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .container {
+        flex-direction: column;
+        width: 90vw;
+      }
+      .left-side,
+      .right-side {
+        flex: none;
+        width: 100%;
+        padding: 1.5rem 1.75rem;
+      }
+      .right-side {
+        padding-top: 0.75rem;
+      }
+    }
+  

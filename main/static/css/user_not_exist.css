@@ -1,0 +1,256 @@
+ :root {
+     --primary-color: #3f51b5;
+     --secondary-color: #ff4081;
+     --dark-color: #212121;
+     --light-color: #f5f5f5;
+     --error-color: #d32f2f;
+     --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ body {
+     background: var(--background-gradient);
+     min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 20px;
+     color: var(--dark-color);
+ }
+
+ .not-found-container {
+     max-width: 600px;
+     width: 100%;
+     background: white;
+     border-radius: 16px;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     text-align: center;
+     position: relative;
+     padding: 40px;
+     animation: fadeIn 0.5s ease-out;
+ }
+
+ .error-icon {
+     font-size: 80px;
+     color: var(--error-color);
+     margin-bottom: 20px;
+     animation: bounce 2s infinite;
+ }
+
+ h1 {
+     font-size: 32px;
+     margin-bottom: 15px;
+     color: var(--dark-color);
+ }
+
+ p {
+     font-size: 18px;
+     margin-bottom: 30px;
+     line-height: 1.6;
+     color: #555;
+ }
+
+ .search-box {
+     display: flex;
+     justify-content: center;
+     margin-bottom: 30px;
+ }
+
+ .search-box input {
+     padding: 12px 20px;
+     border: 2px solid #ddd;
+     border-radius: 30px 0 0 30px;
+     width: 70%;
+     font-size: 16px;
+     outline: none;
+     transition: all 0.3s;
+ }
+
+ .search-box input:focus {
+     border-color: var(--primary-color);
+ }
+
+ .search-box button {
+     padding: 12px 25px;
+     background-color: var(--primary-color);
+     color: white;
+     border: none;
+     border-radius: 0 30px 30px 0;
+     cursor: pointer;
+     transition: background-color 0.3s;
+     font-size: 16px;
+ }
+
+ .search-box button:hover {
+     background-color: #303f9f;
+ }
+
+ .actions {
+     display: flex;
+     justify-content: center;
+     gap: 15px;
+     flex-wrap: wrap;
+ }
+
+ .btn {
+     padding: 12px 25px;
+     border-radius: 30px;
+     text-decoration: none;
+     font-weight: 600;
+     transition: all 0.3s;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+ }
+
+ .btn-primary {
+     background-color: var(--primary-color);
+     color: white;
+     border: 2px solid var(--primary-color);
+ }
+
+ .btn-primary:hover {
+     background-color: #303f9f;
+     border-color: #303f9f;
+ }
+
+ .btn-outline {
+     background-color: transparent;
+     color: var(--primary-color);
+     border: 2px solid var(--primary-color);
+ }
+
+ .btn-outline:hover {
+     background-color: rgba(63, 81, 181, 0.1);
+ }
+
+ .btn-secondary {
+     background-color: var(--secondary-color);
+     color: white;
+     border: 2px solid var(--secondary-color);
+ }
+
+ .btn-secondary:hover {
+     background-color: #e91e63;
+     border-color: #e91e63;
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(20px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ @keyframes bounce {
+
+     0%,
+     20%,
+     50%,
+     80%,
+     100% {
+         transform: translateY(0);
+     }
+
+     40% {
+         transform: translateY(-20px);
+     }
+
+     60% {
+         transform: translateY(-10px);
+     }
+ }
+
+ .ghost-animation {
+     position: absolute;
+     font-size: 100px;
+     color: rgba(0, 0, 0, 0.05);
+     animation: float 15s infinite linear;
+     pointer-events: none;
+     z-index: -1;
+ }
+
+ .ghost1 {
+     top: -20px;
+     left: -40px;
+     animation-delay: 0s;
+ }
+
+ .ghost2 {
+     top: 60%;
+     right: -30px;
+     animation-delay: 3s;
+ }
+
+ .ghost3 {
+     bottom: -10px;
+     left: 20%;
+     animation-delay: 6s;
+ }
+
+ @keyframes float {
+     0% {
+         transform: translateY(0) rotate(0deg);
+         opacity: 0;
+     }
+
+     10% {
+         opacity: 0.05;
+     }
+
+     50% {
+         transform: translateY(-40px) rotate(15deg);
+     }
+
+     90% {
+         opacity: 0.05;
+     }
+
+     100% {
+         transform: translateY(0) rotate(0deg);
+         opacity: 0;
+     }
+ }
+
+ /* Responsive adjustments */
+ @media (max-width: 768px) {
+     .not-found-container {
+         padding: 30px 20px;
+     }
+
+     h1 {
+         font-size: 28px;
+     }
+
+     p {
+         font-size: 16px;
+     }
+
+     .search-box {
+         flex-direction: column;
+         align-items: center;
+     }
+
+     .search-box input {
+         width: 100%;
+         border-radius: 30px;
+         margin-bottom: 10px;
+     }
+
+     .search-box button {
+         width: 100%;
+         border-radius: 30px;
+     }
+ }

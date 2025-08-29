@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLine Hospital</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <!-- <img src="https://placehold.co/50x50" alt="BlueHealth Hospital Logo - blue cross with heartbeat line"> -->
+                 <!-- <img src="{% static 'images/lifelink.png' %}" alt="Logo image"> -->
+                <h1>LifeLine Hospital</h1>
+            </div>
+
+            <button class="mobile-menu-button">☰</button>
+
+            <nav>
+                <ul>
+                    <li><a  href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contect Us</a></li>
+                    <li>
+                        
+                        <a class="cta-button" href="{% url 'auth' %}" >Login</a>
+                    </li>
+
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero fade-in">
+        <div class="hero-content">
+            <h2>Advanced Healthcare Management Solutions</h2>
+            <p>Streamline your hospital operations with our comprehensive management system designed to improve patient
+                care and administrative efficiency.</p>
+                
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">Key Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Patient Records</h3>
+                <p>Secure digital storage and easy access to complete patient medical histories and treatment records.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏥</div>
+                <h3>Appointment Scheduling</h3>
+                <p>Efficient scheduling system that minimizes wait times and optimizes doctor availability.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💊</div>
+                <h3>Pharmacy Management</h3>
+                <p>Integrated system for tracking medication inventory, prescriptions, and pharmaceutical sales.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Billing & Insurance</h3>
+                <p>Automated billing processes with support for multiple insurance providers and payment methods.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Analytics Dashboard</h3>
+                <p>Comprehensive data visualization tools for performance monitoring and decision making.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Security Compliant</h3>
+                <p>HIPAA-compliant data protection with role-based access control and audit trails.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/patiant_register.jpg' %}"
+                        alt="Modern hospital reception area with helpful staff assisting patients" />
+                </div>
+                <div class="service-info">
+                    <h3>Patient Registration</h3>
+                    <p>Quick and easy digital registration process with minimal paperwork.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/ehelth_record.jpg' %}"
+                        alt="Doctor using tablet to access patient records in a well-lit examination room" />
+                </div>
+                <div class="service-info">
+                    <h3>Electronic Health Records</h3>
+                    <p>Complete digital documentation of patient health information.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="{% static 'images/digno_init.jpg' %}"
+                        alt="Medical staff reviewing charts and diagnostic images on computer monitors" />
+                </div>
+                <div class="service-info">
+                    <h3>Diagnostic Integration</h3>
+                    <p>Seamless connection with laboratory and imaging systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="{% static 'js/home.js' %}"></script>
+</body>
+
+</html>

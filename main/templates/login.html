@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System | Authentication</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"> -->
+
+</head>
+
+<body>
+
+
+    <div id="home" class="container">
+        
+
+
+        <div class="auth-container">
+            <div class="auth-image">
+                <!-- <h2>Welcome to HealthPlus</h2>
+                <p>Your trusted partner in healthcare excellence since 1995</p> -->
+                <img src="{% static 'images/19836.jpg' %} " alt=""
+                    style="margin-top: 30px; width: 100%; border-radius: 5px;">
+
+            </div>
+
+            <div class="auth-forms">
+                <div class="user-type-tabs">
+                    <button class="tab-btn active" data-tab="patient">Patient</button>
+                    <button class="tab-btn" data-tab="doctor">Admin</button>
+                    <!-- <button class="tab-btn" data-tab="admin">Admin</button> -->
+                </div>
+
+                <div class="form-container">
+
+
+
+
+
+                    <!-- Patient Login Form -->
+                    <div id="patient-login-form" class="auth-form">
+                        <h2 style="margin-bottom: 20px;">Patient Login</h2>
+                        <form id="patient-login" method="POST" action="{% url 'auth' %}">
+
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="patient-email">Email Address</label>
+                                <input type="email" name="email" id="patient-email" required
+                                    placeholder="Enter your email">
+                                <div class="error-message" id="patient-email-error">Please enter a valid email address
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="patient-password">Password</label>
+                                <div class="input-icon">
+                                    <input type="password" name="password" id="patient-password" required
+                                        placeholder="Enter your password">
+                                    <i class="fas fa-eye password-toggle"></i>
+
+                                </div>
+
+
+                                <div class="error-message" id="patient-password-error">Password must be at least 8
+                                    characters</div>
+                            </div>
+
+
+
+
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember-patient">
+                                <label for="remember-patient">Remember me</label>
+                            </div>
+                            <button type="submit" class="btn">Login</button>
+                        </form>
+                        <div class="form-footer">
+                            <p>Don't have an account? <a href="{% url 'user_register' %}">Register</a></p>
+                            <p><a href="#">Forgot password?</a></p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- Admin Login Form -->
+                <div id="doctor-login-form" class="auth-form hidden">
+                    <h2 style="margin-bottom: 20px;">Admin Login</h2>
+                    <form id="doctor-login" method="POST" action="{% url 'adminpanel_login' %}">
+
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="doctor-id">Admin Email</label>
+                            <input name="admin_email" type="email" id="doctor-id" required
+                                placeholder="Enter Admin Email">
+                            <div class="error-message" id="doctor-id-error">Please enter Admin Email
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="doctor-password">Password</label>
+                            <div class="input-icon">
+                                <input name="admin_password" type="password" id="doctor-password" required
+                                    placeholder="Enter your password">
+                                <i class="fas fa-eye password-toggle"></i>
+                            </div>
+                            <div class="error-message" id="doctor-password-error">Password must be at least
+                                8 characters</div>
+                        </div>
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-doctor">
+                            <label for="remember-doctor">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <div class="form-footer">
+                        <p><a href="#">Forgot password?</a></p>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- Admin Login Form -->
+                <div id="admin-login-form" class="auth-form hidden">
+                    <h2 style="margin-bottom: 20px;">Admin Login</h2>
+                    <form id="admin-login" method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label for="admin-username">Username</label>
+                            <input type="text" id="admin-username" required placeholder="Enter your username">
+                            <div class="error-message" id="admin-username-error">Please enter your username</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-password">Password</label>
+                            <div class="input-icon">
+                                <input type="password" id="admin-password" required placeholder="Enter your password">
+                                <i class="fas fa-eye password-toggle"></i>
+                            </div>
+                            <div class="error-message" id="admin-password-error">Password must be at least 10 characters
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <div class="form-footer">
+                        <p><a href="#">Forgot password?</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".password-toggle").forEach(toggle => {
+                toggle.addEventListener("click", function () {
+                    const input = this.previousElementSibling;
+
+                    if (input.type === "password") {
+                        input.type = "text";
+                        this.classList.remove("fa-eye");
+                        this.classList.add("fa-eye-slash");
+                    } else {
+                        input.type = "password";
+                        this.classList.remove("fa-eye-slash");
+                        this.classList.add("fa-eye");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="{% static 'js/login2.js' %}"></script>
+</body>
+
+</html>

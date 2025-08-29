@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Hospital Management System</title>
+    <link rel="stylesheet" href="{% static 'css/bookappoi.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="{% static 'images/hospital_plus.png' %}" alt="Hospital Logo - Should be replaced with hospital branding" width="50">
+                <h1>LifeLine Hospital</h1>
+            </div>
+            <div class="nav-menu">
+                <a href="{% url 'index'%}" style="text-decoration: none; color: #333;">
+                <div class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </div></a>
+                <a href="{% url 'book_appointment' %}" style="text-decoration: none; color: #333;">
+                <div class="nav-item active">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span>Book Appointment</span>
+                </div></a>
+                  <a href="{% url 'my_appointment' %}" style="text-decoration: none; color: #333;">
+                <div class="nav-item" onclick="window.location.href='my-appointments.html'">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>My Appointments</span>
+                </div>
+                  </a>
+                  
+                <a href="{% url 'logout' %}" style="text-decoration: none; color: #333;">
+                    <div class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="page-title">
+                    <h2>Book Appointment</h2>
+                    <p>Schedule a consultation with our specialists</p>
+                </div>
+                <div class="user-profile">
+                     <img src="{% static 'images/user_icon.png' %}" alt="Patient profile photo - John Doe, male, 45 years old">
+                    
+                    <span>{{ user.email }}</span>
+                </div>
+            </div>
+            
+            <div class="appointment-form">
+                <div class="form-header">
+                    <h3>Appointment Details</h3>
+                    <p>Fill in the form to book your appointment</p>
+                </div>
+                
+                <form id="appointmentForm" method="POST" action="">
+                    {% csrf_token %}
+                    <!-- ............................ -->
+                     <div class="form-row">
+                    <div class="form-group ">
+                        <label for="patiantname">Patiant Name</label>
+                        <input id="patiantname" name="patiantname" type="text" class="form-control" placeholder="Enter the patiant Name" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="patiantname">Mobile number</label>
+                        <input id="mobileno" name="mobileno" type="text"  class="form-control" placeholder="Enter Mobilenumber" required>
+                    </div>
+                     </div>
+                    <!-- ............................ -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select name="department" id="department" class="form-control" required>
+                                <option value="">Select Department</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Orthopedics">Orthopedics</option>
+                                <option value="Pediatrics">Pediatrics</option>
+                                <option value="Dermatology">Dermatology</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="doctor">Doctor</label>
+                            <select name="doctor" id="doctor" class="form-control" required>
+                                <option value="">Select Doctor</option>
+                                <option value="dr_ahesan">Dr. Ahesan Ali (Cardiology)</option>
+                                <option value="dr_abid">Dr. Abid Husain(Neurology)</option>
+                                <option value="dr_rajesh">Dr. Rajesh (Orthopedics)</option>
+                                <option value="dr_mohsin">Dr. Mohsin Ali (Pediatrics)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input name="date" type="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <select name="time" id="time" class="form-control" required>
+                                <option value="">Select Time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reason">Reason for Appointment</label>
+                        <textarea name="reason" id="reason" class="form-control" rows="4" placeholder="Briefly describe the reason for your appointment..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Book Appointment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+   <script src="{% static 'js/bookappointment.js' %}"></script>
+</body>
+</html>
+

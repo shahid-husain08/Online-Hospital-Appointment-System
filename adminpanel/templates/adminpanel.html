@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/adminpanel.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <!-- <img src="https://placehold.co/40x40" alt="Clinic logo with a stethoscope and heartbeat line" /> -->
+                <h1>Admin Dashboard</h1>
+            </div>
+            <div class="date-time">
+                <div class="time-display" id="current-time">10:45 AM</div>
+                <div class="date-display" id="current-date">May 25, 2024</div>
+            </div>
+            <a href="{% url 'adminpanel_logout' %}">
+              <button class="logout-btn" onclick="logout()">Logout</button>
+            </a>
+        </header>
+
+        <div class="stats-container">
+            <div class="stat-card total">
+                <h3>Total Appointments</h3>
+                <!-- <p>24</p> -->
+                <p>{{ total_count }}</p>
+            </div>
+            <div class="stat-card pending">
+                <h3>Pending Approval</h3>
+                <!-- <p>8</p> -->
+                <p>{{ pending_count }}</p>
+            </div>
+            <div class="stat-card accepted">
+                <h3>Accepted</h3>
+                <!-- <p>14</p> -->
+                <p>{{ accepted_count }}</p>
+            </div>
+            <div class="stat-card cancelled">
+                <h3>Cancelled</h3>
+                <!-- <p>2</p> -->
+                <p>{{ cancelled_count }}</p>
+
+            </div>
+        </div>
+
+        <div class="search-filter">
+            <input type="text" class="search-input" placeholder="Search appointments...">
+            <!-- <select class="filter-select">
+                <option value="all">All Status</option>
+                <option value="pending">Pending</option>
+                <option value="accepted">Accepted</option>
+                <option value="cancelled">Cancelled</option>
+            </select> -->
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="pending">Pending Appointments ({{ pending_count }})</div>
+            <div class="tab" data-tab="accepted">Accepted Appointments  ({{ accepted_count }})</div>
+            <div class="tab" data-tab="cancelled">Cancelled Appointments  ({{ cancelled_count }})</div>
+        </div>
+
+        <div class="content-section">
+
+            <!-- ............................ -->
+                <div id="pending-tab" class="appointment-list">
+    {% for app in pending %}
+    <div class="appointment-card">
+        <div class="appointment-header">
+            <span class="appointment-id">#APT-{{ app.id }}</span>
+            <span class="appointment-status status-pending">Pending</span>
+        </div>
+
+        <div class="patient-info">
+            <div class="patient-name">{{ app.patiantname }}</div>
+        </div>
+
+        <div class="appointment-details">
+            <div class="detail-item"><p>Date & Time</p><p>{{ app.date }} • {{ app.time }}</p></div>
+            <div class="detail-item"><p>Doctor</p><p>{{ app.doctor }}</p></div>
+            <div class="detail-item"><p>Department</p><p>{{ app.department }}</p></div>
+            <div class="detail-item"><p>Mobile</p><p>{{ app.mobileno }}</p></div>
+            <div class="detail-item"><p>Reason</p><p>{{ app.reason }}</p></div>
+        </div>
+
+        <div class="appointment-actions">
+            <form method="post" action="{% url 'accept_appointment' app.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-accept">Accept</button>
+            </form>
+            <form method="post" action="{% url 'cancel_appointment_admin' app.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-cancel">Cancel</button>
+            </form>
+        </div>
+    </div>
+    {% empty %}
+    <p>No pending appointments.</p>
+    {% endfor %}
+</div>
+
+
+    <!-- ✅ ACCEPTED -->
+            <div id="accepted-tab" class="appointment-list hidden">
+                {% for app in accepted %}
+                <div class="appointment-card">
+                    <div class="appointment-header">
+                        <span class="appointment-id">#APT-{{ app.id }}</span>
+                        <span class="appointment-status status-accepted">Accepted</span>
+                    </div>
+
+                    <div class="patient-info">
+                        <div class="patient-name">{{ app.patiantname }}</div>
+                    </div>
+
+                    <div class="appointment-details">
+                        <div class="detail-item"><p>Date & Time</p><p>{{ app.date }} • {{ app.time }}</p></div>
+                        <div class="detail-item"><p>Doctor</p><p>{{ app.doctor }}</p></div>
+                        <div class="detail-item"><p>Department</p><p>{{ app.department }}</p></div>
+                        <div class="detail-item"><p>Mobile</p><p>{{ app.mobileno }}</p></div>
+                        <div class="detail-item"><p>Reason</p><p>{{ app.reason }}</p></div>
+                    </div>
+
+                    <div class="appointment-actions">
+                        <form method="post" action="{% url 'cancel_appointment_admin' app.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-cancel">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No accepted appointments.</p>
+                {% endfor %}
+            </div>
+
+
+
+              <!-- ✅ CANCELLED -->
+            <div id="cancelled-tab" class="appointment-list hidden">
+                {% for app in cancelled %}
+                <div class="appointment-card">
+                    <div class="appointment-header">
+                        <span class="appointment-id">#APT-{{ app.id }}</span>
+                        <span class="appointment-status status-cancelled">Cancelled</span>
+                    </div>
+
+                    <div class="patient-info">
+                        <div class="patient-name">{{ app.patiantname }}</div>
+                    </div>
+
+                    <div class="appointment-details">
+                        <div class="detail-item"><p>Date & Time</p><p>{{ app.date }} • {{ app.time }}</p></div>
+                        <div class="detail-item"><p>Doctor</p><p>{{ app.doctor }}</p></div>
+                        <div class="detail-item"><p>Department</p><p>{{ app.department }}</p></div>
+                        <div class="detail-item"><p>Mobile</p><p>{{ app.mobileno }}</p></div>
+                        <div class="detail-item"><p>Reason</p><p>{{ app.reason }}</p></div>
+                        <!-- <div class="detail-item"><p>Cancellation Reason</p><p>{{ app.cancel_reason }}</p></div> -->
+                    </div>
+                </div>
+                {% empty %}
+                <p>No cancelled appointments.</p>
+                {% endfor %}
+            </div>
+
+           
+        </div>
+    </div>
+    
+
+    <script src="{% static 'js/adminpanel.js' %}"></script>
+
+</body>
+
+</html>
